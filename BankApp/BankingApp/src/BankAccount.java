@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BankAccount {
@@ -40,6 +41,13 @@ public class BankAccount {
 	    do{
 		    System.out.println("********************************************");
 		    System.out.println("Choose an option");
+
+		    while (!input.hasNextInt()) { 															// Validation
+		    System.out.println("Enter a valid option");
+		   	input.nextLine();
+		    }
+		       
+
 	        option = input.nextInt();
 	        System.out.println("\n");
 		            
@@ -50,6 +58,10 @@ public class BankAccount {
 	        else if (option == 2) {
 	        	System.out.println("********************************************");
 	            System.out.println("Enter an amount to deposit");
+	            while (!input.hasNextDouble()) { 													// Validation
+	    		    System.out.println("Enter a valid amount");
+	    		   	input.nextLine();
+	    		    }
 	            double tempMoney = input.nextDouble();
 	            deposit(tempMoney);
 	            System.out.printf("You have deposited $%.2f \n", tempMoney);
@@ -57,6 +69,10 @@ public class BankAccount {
 	        else if (option == 3) {
 	        	System.out.println("********************************************");
 	            System.out.println("Enter an amount to withdraw");
+	            while (!input.hasNextDouble()) { 													// Validation
+	    		    System.out.println("Enter a valid amount");
+	    		   	input.nextLine();
+	    		    }
 	            double withdraw = input.nextDouble();
 	            if(balance - withdraw < 0) {
 	            	System.out.println("You have insufficient funds.");
@@ -73,6 +89,8 @@ public class BankAccount {
 	    	    System.out.println("3) Withdraw an Amount");
 	    	    System.out.println("4) Exit Application");
 	        }
+		    
+		    
 	    } while (option != 4);
 	    System.out.println("********************************************");
 	    System.out.println("********************************************");
